@@ -3,21 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expense Tracker</title>
+    <title>ExpenseFlow | Track Smarter</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+
     <div id="login-screen" class="container">
         <div class="card">
             <h2>Welcome Back</h2>
-            <p>Please Login To Manage Your Expenses</p>
+            <p>Please login to manage your expenses</p>
             <form id="login-form">
-                <input type="email" id="email" placeholder="Email (user@gmail.com)" required>
-                <input type="password" id="password" placeholder="Password (User@1234)" required>
+                <input type="email" id="email" placeholder="Email (admin@test.com)" required>
+                <input type="password" id="password" placeholder="Password (1234)" required>
                 <button type="submit" class="btn-primary">Login</button>
             </form>
         </div>
     </div>
+
     <div id="dashboard" class="container hidden">
         <header>
             <div class="user-info">
@@ -26,20 +29,36 @@
             </div>
             <button id="logout-btn" class="btn-outline">Logout</button>
         </header>
+
         <div class="grid">
             <div class="card">
                 <h3>Add New Expense</h3>
                 <form id="expense-form">
                     <div class="form-group">
-                        <label>Amout ($) </label>
+                        <label>Amount ($)</label>
                         <input type="number" id="amount" step="0.01" required placeholder="0.00">
                     </div>
-                    <div></div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <input type="text" id="category" required placeholder="e.g., Food, Rent, Travel">
+                    </div>
+                    <button type="submit" class="btn-primary">Add Expense</button>
                 </form>
             </div>
+
+            <div class="card">
+                <h3>Expense Distribution</h3>
+                <div class="chart-wrapper">
+                    <canvas id="expenseChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mt-2">
+            <h3>Recent Transactions</h3>
+            <ul id="expense-list" class="list"></ul>
         </div>
     </div>
-
 
     <script src="script.js"></script>
 </body>
